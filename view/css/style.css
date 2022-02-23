@@ -18,28 +18,32 @@
 #item-header{
     position: relative;
     height:70px;
-    width: 100%;
+    width: auto;
     align-items: center;
     justify-content: center;
     display: flex;
-    background-color: tomato;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.9);
+    
 }
 
 #item-header>button{
     position: absolute;
-    right: 6rem;
+    right: 0.2rem;
     top: 1rem;
+    
 }
 #item-header>span{
     position: absolute;
     top: 0.8rem;
     font-size: 2em;
     color: white;
+    left: 0.1em;
+    font-weight: 450;
 
 }
 
 #form{
-    width: 50em;
+    width: 109.9em;
     border: 2px solid rgba(0, 0, 0, 0.3);
     
 }
