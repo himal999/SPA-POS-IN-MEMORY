@@ -7,6 +7,7 @@
     <title>Cinemo Lake</title>
     <link rel="stylesheet" href="./view/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header id="header">
@@ -43,7 +44,7 @@
     <main>
 
         <!--Index page Start-->
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <!-- <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -80,8 +81,116 @@
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
-          </div>
+          </div> -->
         <!--Index page End-->
+
+
+
+
+
+
+        <!--Item Manage Start-->
+        <section>
+            <div id="item-header" class=" mt-4">
+                 <span class="text-uppercase">Item MANAGMENT</span>
+                 <button type="button" class="btn btn-primary">+ Add New Item</button>
+            </div>
+
+            <div id="form" class="mt-5 ms-5 p-5 pt-3 pb-5">
+                <form>
+                    <h4 class="mb-3"id="form-header">Add New Item</h4>
+                    <hr>
+                    <div class="row mb-3">
+                        <div class="col-2">
+                          <label for="inputPassword6" class="col-form-label">Item Code</label>
+                        </div>
+                        <div class="col-3">
+                          <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-2">
+                          <label for="inputPassword6" class="col-form-label">Item Name</label>
+                        </div>
+                        <div class="col-8">
+                          <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+                        </div>
+                    </div>
+                    <div class="row mb-3" >
+                        <div class="col-2">
+                          <label for="inputPassword6" class="col-form-label">Item Qty</label>
+                        </div>
+                        <div class="col-3">
+                          <input type="number" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-2">
+                          <label for="inputPassword6" class="col-form-label">Item Price</label>
+                        </div>
+                        <div class="col-3">
+                          <input type="number" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+                        </div>
+                    </div>
+                    <div id="form-btn">
+                         <button type="" class="btn btn-danger me-3">Clear</button>
+                         <button type="submit" class="btn btn-primary">Add Item</button>
+                    </div>
+                </form>
+            </div>
+            <div class="ms-5 mt-5 me-5">
+                <table class="table table-hover">
+                    <thead class="table-dark ">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Item Code</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Item Qty</th>
+                        <th scope="col">Item Price</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>45.00</td>
+                        <td>
+                            <i class="fa-solid fa-pen me-5"></i>
+                            <i class="fa-solid fa-trash"></i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>45.00</td>
+                        <td>
+                            <i class="fa-solid fa-pen me-5"></i>
+                            <i class="fa-solid fa-trash"></i>
+                        </td>
+                      </tr>
+                      <tr>
+                       <th scope="row">3</th>
+                       <td>I-003</td>
+                       <td>Apple</td>
+                       <td>12</td>
+                       <td>45.00</td>
+                       <td>
+                        <i class="fa-solid fa-pen me-5"></i>
+                        <i class="fa-solid fa-trash"></i>
+                    </td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+     
+
+        </section>
+        <!--Item Manage End-->
 
     </main>
 
