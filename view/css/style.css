@@ -1,0 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#header{
+    height: auto;
+    width: auto;
+    box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.3);
+}
