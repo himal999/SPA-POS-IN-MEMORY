@@ -1,5 +1,5 @@
 $("document").ready(function(){
-   disable();
+ disable();
 })
 
 
@@ -7,11 +7,10 @@ $('#btnAdd').click(function(){
 
     $('#form-header').text("Add New Item");
     enable();
-   
-    
 })
 
 $('#form-clear').click(function(){
+   
     clearField();
   
 })
@@ -43,22 +42,125 @@ $('#inItemPrice').on('keyup',function(){
 
 
 
+//this saveData btn not workinh ?
+$("#saveData").click(function(){
+
+          
+})
 
 
+
+//tempory savedata Btn
+
+$('#ss').click(function() {
+    var i = new Item();
+
+
+    i.setItemCode($('#inItemCode').val());
+    i.setItemName($('#inItemName').val())
+    i.setItemQty($('#inItemQty').val())
+    i.setItemPrice($('#inItemPrice').val())
+
+    item.push(i);
+
+
+    clearField();
+    disable();
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+
+
+        
+
+        
+    
+      
+        
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Extra methods
+
+
+//validation
 
 
 function btnStatus(){
     var b = valid(); 
 
     if(b){
-        $("#form-add").removeAttr("disabled")
+
+      $('#saveData').removeAttr("disabled");
+      
+
     }else{
-        $("#form-add").attr("disabled",'true')
+       $("#saveData").attr("disabled",'disabled')
+
+   
+       
     }
 }
 
 function valid(){
-    if( regItemCode.test($('#inItemCode').val())){
+    if(regItemCode.test($('#inItemCode').val())){
         $('#inItemCode').css("border","1px solid  green");
         $('#errorCode').text("");
         $('inItemName').focus();
@@ -73,6 +175,7 @@ function valid(){
                 if(regItemPrice.test($('#inItemPrice').val())){
                     $('#inItemPrice').css("border","1px solid  green")
                     $('#errorPrice').text("")
+                    $('#saveData').focus();
                     return true;
                 }else{
                     $('#inItemPrice').css("border","1px solid red")
@@ -100,55 +203,16 @@ function valid(){
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//methods
-
 //Disable all btn/field
 
 function disable(){
     $('#form-header').text(null);
-    $("#form-clear").attr("disabled",'true')
-    $("#form-add").attr("disabled",'true')
-    $('#inItemCode').attr('disabled','true')
-    $('#inItemName').attr('disabled','true')
-    $('#inItemQty').attr('disabled','true')
-    $('#inItemPrice').attr('disabled','true')
+    $("#form-clear").attr("disabled",'disabled')
+    $("#saveData").attr("disabled",'disabled')
+    $('#inItemCode').attr('disabled','disabled')
+    $('#inItemName').attr('disabled','disabled')
+    $('#inItemQty').attr('disabled','disabled')
+    $('#inItemPrice').attr('disabled','disabled')
 }
 
 //Enable all btn/field
@@ -167,7 +231,11 @@ function enable(){
 function clearField(){
 
     $('#inItemCode').val("")
+    $('#inItemCode').css("border","1px solid #CED4DA")
     $('#inItemName').val("")
+    $('#inItemName').css("border","1px solid #CED4DA")
     $('#inItemQty').val("")
+    $('#inItemQty').css("border","1px solid #CED4DA")
     $('#inItemPrice').val("")
+    $('#inItemPrice').css("border","1px solid #CED4DA")
 }
