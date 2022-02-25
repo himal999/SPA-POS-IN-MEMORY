@@ -1,5 +1,7 @@
 $("document").ready(function(){
  disable();
+ e.innerHTML = '<i class="fa fa-pencil" aria-hidden="true"></i>';
+ 
 })
 
 
@@ -25,19 +27,45 @@ var regItemPrice = /^[0-9]{1,}(.)[0-9]{1,2}$/
 
 
 
-$('#inItemCode').on('keyup',function(){
+$('#inItemCode').on('keyup',function(event){
     btnStatus();
+    
+    if(event.key == "Enter"){
+        if(!checkItemCode($('#inItemCode').val())){
+            $('#inItemCode').css("border","1px solid  green");
+            $('#errorCode').text("");
+            $('#inItemName').focus();
+        }else{
+            $('#inItemCode').css("border","1px solid red")
+            $('#errorCode').text("Alredy Exists Item Code")
+            $('#inItemCode').focus();
+           
+        }
+    }
+    
 })
 
-$('#inItemName').on('keyup',function(){
+
+
+
+$('#inItemName').on('keyup',function(event){
     btnStatus();
+    if(event.key == "Enter"){
+        $('#inItemQty').focus();
+    }
 })
 
-$('#inItemQty').on('keyup',function(){
+$('#inItemQty').on('keyup',function(event){
     btnStatus();
+    if(event.key == "Enter"){
+        $('#inItemPrice').focus();
+    }
 })
-$('#inItemPrice').on('keyup',function(){
+$('#inItemPrice').on('keyup',function(event){
     btnStatus();
+    if(event.key == "Enter"){
+        $('#saveData').focus();
+    }
 })
 
 
@@ -63,10 +91,14 @@ $('#ss').click(function() {
 
     item.push(i);
 
+    loadTable();
 
     clearField();
     disable();
 })
+
+
+
 
 
 
@@ -140,6 +172,41 @@ $('#ss').click(function() {
 // Extra methods
 
 
+//load Table
+
+function loadTable() {
+
+    $("#itemTbl>tr").remove();
+  
+    let ref = 1;
+    let up = '<i class="fa fa-pencil" aria-hidden="true"></i>';
+    let del = '<i class="fa-solid fa-trash"></i>';
+    
+    for(var i in item){
+       
+
+        let rowObj= "<tr><th>"+ref+"</th><td>"+item[i].itemCode+"</td><td>"+item[i].itemName+"</td><td>"+item[i].itemQty+"</td><td>"+item[i].itemPrice+"</td><td>"+up + "__or__" + del+"</td></tr>";
+        $('#itemTbl').append(rowObj);
+        ref++;
+    }
+
+}
+
+// check item Code
+
+function checkItemCode(itemCode){
+    for(let i in item){
+ 
+        if(item[i].itemCode == itemCode){
+           
+            return true
+        }
+    }
+   
+    return false;
+}
+
+
 //validation
 
 
@@ -161,45 +228,49 @@ function btnStatus(){
 
 function valid(){
     if(regItemCode.test($('#inItemCode').val())){
+       
         $('#inItemCode').css("border","1px solid  green");
         $('#errorCode').text("");
-        $('inItemName').focus();
-        if(regItemName.test($('#inItemName').val())){
-            $('#inItemName').css("border","1px solid  green")
-            $('#errorName').text("")
-            $('inItemQty').focus();
-            if(regItemQty.test($('#inItemQty').val())){
-                $('#inItemQty').css("border","1px solid  green")
-                $('#errorQty').text("")
-                $('inItemPrice').focus();
-                if(regItemPrice.test($('#inItemPrice').val())){
-                    $('#inItemPrice').css("border","1px solid  green")
-                    $('#errorPrice').text("")
-                    $('#saveData').focus();
-                    return true;
+      
+            if(regItemName.test($('#inItemName').val())){
+                $('#inItemName').css("border","1px solid  green")
+                $('#errorName').text("")
+               
+                if(regItemQty.test($('#inItemQty').val())){
+                    $('#inItemQty').css("border","1px solid  green")
+                    $('#errorQty').text("")
+                    
+                  
+                    if(regItemPrice.test($('#inItemPrice').val())){
+                        $('#inItemPrice').css("border","1px solid  green")
+                        $('#errorPrice').text("")
+                      
+                        return true;
+                    }else{
+                        $('#inItemPrice').css("border","1px solid red")
+                        $('#errorPrice').text("Please enter .x or .xx ")
+                        
+                        
+                    }
                 }else{
-                    $('#inItemPrice').css("border","1px solid red")
-                    $('#errorPrice').text("Please enter .x or .xx ")
-                    $('#inItemPrice').focus();
-                    return false;
+                    $('#inItemQty').css("border","1px solid red")
+                    $('#errorQty').text("Please enter valid Item Qty")
+                  
+                 
                 }
             }else{
-                $('#inItemQty').css("border","1px solid red")
-                $('#errorQty').text("Please enter valid Item Qty")
-                $('#inItemQty').focus();
-                return false;
+                $('#inItemName').css("border","1px solid red")
+                $('#errorName').text("Please don't using @ , / , \ , ' , ; , . , $ , % ,# and etc")
+             
+          
             }
-        }else{
-            $('#inItemName').css("border","1px solid red")
-            $('#errorName').text("Please don't using @ , / , \ , ' , ; , . , $ , % ,# and etc")
-            $('#inItemName').focus();
-            return false;
-        }
+    
+ 
     }else{
         $('#inItemCode').css("border","1px solid red")
         $('#errorCode').text("Please enter valid Item Code")
-        $('#inItemCode').focus();
-        return false;
+       
+      
     }
 }
 
