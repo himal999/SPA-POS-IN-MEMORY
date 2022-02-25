@@ -1,13 +1,13 @@
 $("document").ready(function(){
  disable();
- e.innerHTML = '<i class="fa fa-pencil" aria-hidden="true"></i>';
- 
+    
 })
 
 
 $('#btnAdd').click(function(){
-
+    clearField();
     $('#form-header').text("Add New Item");
+    $("#saveData").text("Add Item")
     enable();
 })
 
@@ -31,6 +31,8 @@ $('#inItemCode').on('keyup',function(event){
     btnStatus();
     
     if(event.key == "Enter"){
+
+
         if(!checkItemCode($('#inItemCode').val())){
             $('#inItemCode').css("border","1px solid  green");
             $('#errorCode').text("");
@@ -50,21 +52,31 @@ $('#inItemCode').on('keyup',function(event){
 
 $('#inItemName').on('keyup',function(event){
     btnStatus();
-    if(event.key == "Enter"){
-        $('#inItemQty').focus();
+
+     if(event.key == "Enter"){
+
+        
+      
+            $('#inItemQty').focus();
+      
+      
     }
 })
 
 $('#inItemQty').on('keyup',function(event){
     btnStatus();
     if(event.key == "Enter"){
-        $('#inItemPrice').focus();
+    
+            $('#inItemPrice').focus();
+     
+       
     }
 })
 $('#inItemPrice').on('keyup',function(event){
     btnStatus();
     if(event.key == "Enter"){
         $('#saveData').focus();
+  
     }
 })
 
@@ -78,16 +90,23 @@ $("#saveData").click(function(){
 
 
 
-//tempory savedata Btn
+//tempory savedata/update Btn
 
 $('#ss').click(function() {
-    var i = new Item();
 
+    var i = new Item();
 
     i.setItemCode($('#inItemCode').val());
     i.setItemName($('#inItemName').val())
     i.setItemQty($('#inItemQty').val())
     i.setItemPrice($('#inItemPrice').val())
+
+
+   if($("#ss").text() == "save"){
+   
+
+   
+  
 
     item.push(i);
 
@@ -95,7 +114,49 @@ $('#ss').click(function() {
 
     clearField();
     disable();
+
+   }else{
+       
+        for(var s in item){
+            if(item[s].getItemCode() == $('#inItemCode').val()){
+        
+              item[s].setItemName(i.getItemName());
+              item[s].setItemQty(i.getItemQty()) ;
+              item[s].setItemPrice(i.getItemPrice());
+              loadTable();
+              clearField();
+              disable();
+            }
+        }
+   }
+
+
+
+
+
+  
+
+    //update data
+
+    $("#itemTbl>tr").click(function(){
+
+         clearField();
+         enable();
+         $('#form-header').text("Update Item");
+         $('#saveData').text("Update");
+         $('#ss').text("Update"); //TEMPORY BTN
+         $("#inItemCode").attr("disabled","true");
+         $('#inItemCode').val($(this).children(':eq(1)').text()) 
+         $('#inItemName').val($(this).children(':eq(2)').text()) 
+         $('#inItemQty').val($(this).children(':eq(3)').text()) 
+         $('#inItemPrice').val($(this).children(':eq(4)').text()) 
+
+   })
+
+    
 })
+
+
 
 
 
@@ -172,6 +233,12 @@ $('#ss').click(function() {
 // Extra methods
 
 
+
+
+
+
+
+
 //load Table
 
 function loadTable() {
@@ -184,7 +251,7 @@ function loadTable() {
     
     for(var i in item){
        
-
+        
         let rowObj= "<tr><th>"+ref+"</th><td>"+item[i].itemCode+"</td><td>"+item[i].itemName+"</td><td>"+item[i].itemQty+"</td><td>"+item[i].itemPrice+"</td><td>"+up + "__or__" + del+"</td></tr>";
         $('#itemTbl').append(rowObj);
         ref++;
