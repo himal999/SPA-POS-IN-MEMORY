@@ -8,6 +8,7 @@ $('#btnAdd').click(function(){
     clearField();
     $('#form-header').text("Add New Item");
     $("#saveData").text("Add Item")
+    $("#ss").text("Add Item") //tempory btn
     enable();
 })
 
@@ -90,7 +91,7 @@ $("#saveData").click(function(){
 
 
 
-//tempory savedata/update Btn
+//tempory savedata/update/delete btn
 
 $('#ss').click(function() {
 
@@ -102,7 +103,7 @@ $('#ss').click(function() {
     i.setItemPrice($('#inItemPrice').val())
 
 
-   if($("#ss").text() == "save"){
+   if($("#ss").text() == "Add Item"){
    
 
    
@@ -115,7 +116,7 @@ $('#ss').click(function() {
     clearField();
     disable();
 
-   }else{
+   }else if($("#ss").text() == "Update"){
        
         for(var s in item){
             if(item[s].getItemCode() == $('#inItemCode').val()){
@@ -129,9 +130,35 @@ $('#ss').click(function() {
             }
         }
    }
+   else{
+       for(var s in item){
+           if(item[s].getItemCode() == $('#inItemCode').val()){
+                item.pop(item[s]);
+                loadTable();
+                clearField();
+                disable();
+            }
+       }
+   }
 
 
+    //delete data
 
+    $("#itemTbl>tr").dblclick(function(){
+        clearField();
+        
+        $('#form-header').text("Delete Item");
+        $('#saveData').text("Delete");
+        $('#ss').text("Delete"); //TEMPORY BTN
+        $("#inItemCode").attr("disabled","true");
+        $("#inItemName").attr("disabled","true");
+        $("#inItemQty").attr("disabled","true");
+        $("#inItemPrice").attr("disabled","true");
+        $('#inItemCode').val($(this).children(':eq(1)').text()) 
+        $('#inItemName').val($(this).children(':eq(2)').text()) 
+        $('#inItemQty').val($(this).children(':eq(3)').text()) 
+        $('#inItemPrice').val($(this).children(':eq(4)').text()) 
+    })
 
 
   
@@ -157,87 +184,7 @@ $('#ss').click(function() {
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     
-
-
-        
-
-        
-    
-      
-        
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Extra methods
-
-
-
-
-
-
-
 
 //load Table
 
