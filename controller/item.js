@@ -1,5 +1,6 @@
 $("document").ready(function(){
  disable();
+ loadTable();
     
 })
 
@@ -8,13 +9,26 @@ $('#btnAdd').click(function(){
     clearField();
     $('#form-header').text("Add New Item");
     $("#saveData").text("Add Item")
+    $("#form-clear").text("Clear")
     $("#ss").text("Add Item") //tempory btn
     enable();
 })
 
 $('#form-clear').click(function(){
+
+  
    
-    clearField();
+    if($("#saveData").text() == "Add Item"){
+
+        clearField();
+
+    }else if($("#saveData").text() == "Update"){
+       
+        clearUpdateField();
+    }else{
+        clearField();
+        disable();
+    }
   
 })
 
@@ -33,19 +47,23 @@ $('#inItemCode').on('keyup',function(event){
     
     if(event.key == "Enter"){
 
-
-        if(!checkItemCode($('#inItemCode').val())){
-            $('#inItemCode').css("border","1px solid  green");
-            $('#errorCode').text("");
-            $('#inItemName').focus();
-        }else{
-            $('#inItemCode').css("border","1px solid red")
-            $('#errorCode').text("Alredy Exists Item Code")
-            $('#inItemCode').focus();
-           
-        }
+        $('#inItemName').focus();
+       
     }
     
+})
+
+$('#inItemCode').blur(function(){
+    if(!checkItemCode($('#inItemCode').val())){
+        $('#inItemCode').css("border","1px solid  green");
+        $('#errorCode').text("");
+        $('#inItemName').focus();
+    }else{
+        $('#inItemCode').css("border","1px solid red")
+        $('#errorCode').text("Alredy Exists Item Code")
+        $('#inItemCode').focus();
+       
+    }
 })
 
 
@@ -95,6 +113,10 @@ $("#saveData").click(function(){
 
 $('#ss').click(function() {
 
+
+    $("#itemTbl>tr").off();
+
+
     var i = new Item();
 
     i.setItemCode($('#inItemCode').val());
@@ -105,16 +127,15 @@ $('#ss').click(function() {
 
    if($("#ss").text() == "Add Item"){
    
+        item.push(i);
 
-   
-  
+        alert("Item Added Successfully")
 
-    item.push(i);
+        loadTable();
 
-    loadTable();
-
-    clearField();
-    disable();
+        clearField();
+        
+        disable();
 
    }else if($("#ss").text() == "Update"){
        
@@ -131,14 +152,22 @@ $('#ss').click(function() {
         }
    }
    else{
-       for(var s in item){
-           if(item[s].getItemCode() == $('#inItemCode').val()){
-                item.pop(item[s]);
-                loadTable();
-                clearField();
-                disable();
+
+        if(deleteItem()){
+            for(var s in item){
+                if(item[s].getItemCode() == $('#inItemCode').val()){
+                     item.pop(item[s]);
+                     loadTable();
+                     clearField();
+                     disable();
+                     return
+                 }
             }
-       }
+        }
+
+        clearField();
+        disable();
+     
    }
 
 
@@ -149,6 +178,9 @@ $('#ss').click(function() {
         
         $('#form-header').text("Delete Item");
         $('#saveData').text("Delete");
+        $("#saveData").removeAttr("disabled")
+        $('#form-clear').text("Cancel");
+        $("#form-clear").removeAttr("disabled")
         $('#ss').text("Delete"); //TEMPORY BTN
         $("#inItemCode").attr("disabled","true");
         $("#inItemName").attr("disabled","true");
@@ -170,6 +202,8 @@ $('#ss').click(function() {
          clearField();
          enable();
          $('#form-header').text("Update Item");
+         $('#form-clear').text("Clear");
+     
          $('#saveData').text("Update");
          $('#ss').text("Update"); //TEMPORY BTN
          $("#inItemCode").attr("disabled","true");
@@ -186,22 +220,42 @@ $('#ss').click(function() {
 
 // Extra methods
 
+
+//delete confirm
+
+function deleteItem() {
+    if (confirm("Are you sure?")) {
+       return true
+    }
+    return false;
+}
+
 //load Table
 
 function loadTable() {
 
     $("#itemTbl>tr").remove();
+
+
+    if(item.length == 0){
+        let co = "'color:red;position:relative;left:830px;'"
+        let msg = "<tr><td><h5 style="+co+">No Data Available</h5></td></tr>";
+        $('#itemTbl').append(msg);
+
+    }else{
   
-    let ref = 1;
-    let up = '<i class="fa fa-pencil" aria-hidden="true"></i>';
-    let del = '<i class="fa-solid fa-trash"></i>';
+       let ref = 1;
     
-    for(var i in item){
+    
+      for(var i in item){
        
         
-        let rowObj= "<tr><th>"+ref+"</th><td>"+item[i].itemCode+"</td><td>"+item[i].itemName+"</td><td>"+item[i].itemQty+"</td><td>"+item[i].itemPrice+"</td><td>"+up + "__or__" + del+"</td></tr>";
+        let rowObj= "<tr><th>"+ref+"</th><td>"+item[i].itemCode+"</td><td>"+item[i].itemName+"</td><td>"+item[i].itemQty+"</td><td>"+item[i].itemPrice+"</td></tr>";
         $('#itemTbl').append(rowObj);
-        ref++;
+        
+        f++;
+     }
+
     }
 
 }
@@ -311,12 +365,24 @@ function enable(){
     $('#inItemPrice').removeAttr('disabled')
 }
 
-// Clear Field
+// Clear Field 
 
 function clearField(){
 
     $('#inItemCode').val("")
     $('#inItemCode').css("border","1px solid #CED4DA")
+    $('#inItemName').val("")
+    $('#inItemName').css("border","1px solid #CED4DA")
+    $('#inItemQty').val("")
+    $('#inItemQty').css("border","1px solid #CED4DA")
+    $('#inItemPrice').val("")
+    $('#inItemPrice').css("border","1px solid #CED4DA")
+}
+
+// clear field update
+
+function clearUpdateField(){
+    
     $('#inItemName').val("")
     $('#inItemName').css("border","1px solid #CED4DA")
     $('#inItemQty').val("")
