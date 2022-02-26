@@ -58,10 +58,21 @@ $('#inItemCode').blur(function(){
         $('#inItemCode').css("border","1px solid  green");
         $('#errorCode').text("");
         $('#inItemName').focus();
+        $("#saveData").removeAttr('disabled');
+        $('#inItemName').removeAttr("disabled")
+        $('#inItemQty').removeAttr("disabled")
+        $('#inItemPrice').removeAttr("disabled")
+     
     }else{
         $('#inItemCode').css("border","1px solid red")
         $('#errorCode').text("Alredy Exists Item Code")
         $('#inItemCode').focus();
+        $("#saveData").attr("disabled","disabled")
+        $('#inItemName').attr("disabled","disabled")
+        $('#inItemQty').attr("disabled","disabled")
+        $('#inItemPrice').attr("disabled","disabled")
+        clearUpdateField();
+       
        
     }
 })
@@ -160,7 +171,7 @@ $('#ss').click(function() {
                      loadTable();
                      clearField();
                      disable();
-                     return
+                     
                  }
             }
         }
@@ -253,7 +264,7 @@ function loadTable() {
         let rowObj= "<tr><th>"+ref+"</th><td>"+item[i].itemCode+"</td><td>"+item[i].itemName+"</td><td>"+item[i].itemQty+"</td><td>"+item[i].itemPrice+"</td></tr>";
         $('#itemTbl').append(rowObj);
         
-        f++;
+        ref++;
      }
 
     }
