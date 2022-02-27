@@ -49,7 +49,7 @@
     
 }
 
-#form-header{
+#form-header,#form-header-customer{
     position: relative;
     justify-content: center;
     align-items: center;
