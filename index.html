@@ -34,8 +34,8 @@
                   </li>
                 </ul>
                 <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search">
+                  <button class="btn btn-outline-success" type="submit" id="btnSearch">Search</button>
                 </form>
               </div>
             </div>
@@ -90,7 +90,7 @@
 
 
         <!--Item Manage Start-->
-        <section>
+        <!-- <section>
             <div id="item-header" class=" mt-4 ms-5 me-5">
                  <span class="text-uppercase text-black ">Item MANAGMENT</span>
                  <button type="button" class="btn btn-primary" id="btnAdd">+ Add New Item</button>
@@ -163,8 +163,86 @@
             </div>
      
 
-        </section>
+        </section> -->
         <!--Item Manage End-->
+
+
+        <!--Customer Manage Start-->
+        <section>
+          <div id="item-header" class=" mt-4 ms-5 me-5">
+               <span class="text-uppercase text-black ">Customer MANAGMENT</span>
+               <button type="button" class="btn btn-primary" id="btnAdd">+ Add New Item</button>
+          </div>
+
+          <div id="form" class="mt-5 ms-5 p-5 pt-3 pb-5">
+              <form>
+                  <h4 class="mb-3"id="form-header">Add New Customer</h4>
+                  <hr>
+                  <div class="row mb-3">
+                      <div class="col-1">
+                        <label for="inputPassword6" class="col-form-label" >Customer NIC *</label>
+                      </div>
+                      <div class="col-3">
+                        <input type="text" id="inItemCode" class="form-control form-input" aria-describedby="passwordHelpInline">
+                        <p><small class="text-danger p-1 "id="errorCode"></small></p>
+                      </div>
+                      
+                  </div>
+                  <div class="row mb-3">
+                      <div class="col-1">
+                        <label for="inputPassword6" class="col-form-label">Customer Name *</label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" id="inItemName"  class="form-control form-input" aria-describedby="passwordHelpInline">
+                        <p><small class="text-danger p-1 " id="errorName"></small></p>
+                      </div>
+                  </div>
+                  <div class="row mb-3" >
+                      <div class="col-1">
+                        <label for="inputPassword6" class="col-form-label">Customer Address*</label>
+                      </div>
+                      <div class="col-3">
+                        <input type="number" id="inItemQty" min="1"  class="form-control form-input" aria-describedby="passwordHelpInline">
+                        <p><small class="text-danger p-1 "id="errorQty"></small></p>
+                      </div>
+                  </div>
+                  <div class="row mb-4">
+                      <div class="col-1">
+                        <label for="inputPassword6" class="col-form-label">Customer Salary ($) *</label>
+                      </div>
+                      <div class="col-3">
+                        <input type="number" id="inItemPrice" min="1" step=".01" class="form-control form-input" aria-describedby="passwordHelpInline">
+                        <p><small class="text-danger p-1 "id="errorPrice"></small></p>
+                      </div>
+                  </div>
+                  <div id="form-btn">
+                       <button type="reset" class="btn btn-danger me-3" id="form-clear">Clear</button>
+                       <button type="submit"class="btn btn-primary" id="saveData">Add Customer</button>
+                  </div>
+              </form>
+          </div>
+          <button class="btn m-5" id="ss">save</button>
+          <div class="ms-5 mt-5 me-5">
+              <table class="table table-hover">
+                  <thead class="table-dark ">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col"> Customer NIC</th>
+                      <th scope="col">Customer Name</th>
+                      <th scope="col">Customer Address</th>
+                      <th scope="col">Customer Salary</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody id="itemTbl">
+                 
+                  </tbody>
+                </table>
+          </div>
+   
+
+        </section>
+        <!--Customer Manage End-->
 
     </main>
 

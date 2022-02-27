@@ -401,3 +401,15 @@ function clearUpdateField(){
     $('#inItemPrice').val("")
     $('#inItemPrice').css("border","1px solid #CED4DA")
 }
+
+//search item
+
+$("#btnSearch").click(function(){
+ 
+    let charctor = $("#search").val();
+    for(var i in item){
+        if(item[i].getItemCode() == charctor){
+            console.log("sit")
+        }
+    }
+})
