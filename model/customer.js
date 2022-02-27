@@ -22,11 +22,11 @@ function Customer(){
     this.setCustomerAddress  = function(custAddress){
         this.custAddress = custAddress;
     }
-    this.getCUstomerAddress = function(){
+    this.getCustomerAddress = function(){
         return this.custAddress;
     }
 
-    this.setCUstomerSalary = function(custSalary){
+    this.setCustomerSalary = function(custSalary){
         this.custSalary = custSalary;
     }
     this.getCustomerSalary = function(){

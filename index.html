@@ -171,20 +171,20 @@
         <section>
           <div id="item-header" class=" mt-4 ms-5 me-5">
                <span class="text-uppercase text-black ">Customer MANAGMENT</span>
-               <button type="button" class="btn btn-primary" id="btnAdd">+ Add New Item</button>
+               <button type="button" class="btn btn-primary" id="btnAddCustomer">+ Add New Customer</button>
           </div>
 
           <div id="form" class="mt-5 ms-5 p-5 pt-3 pb-5">
               <form>
-                  <h4 class="mb-3"id="form-header">Add New Customer</h4>
+                  <h4 class="mb-3"id="form-header-customer">Add New Customer</h4>
                   <hr>
                   <div class="row mb-3">
                       <div class="col-1">
                         <label for="inputPassword6" class="col-form-label" >Customer NIC *</label>
                       </div>
                       <div class="col-3">
-                        <input type="text" id="inItemCode" class="form-control form-input" aria-describedby="passwordHelpInline">
-                        <p><small class="text-danger p-1 "id="errorCode"></small></p>
+                        <input type="text" id="inCustomerNic" class="form-control form-input" aria-describedby="passwordHelpInline">
+                        <p><small class="text-danger p-1 "id="errorNic-customer"></small></p>
                       </div>
                       
                   </div>
@@ -193,8 +193,8 @@
                         <label for="inputPassword6" class="col-form-label">Customer Name *</label>
                       </div>
                       <div class="col-8">
-                        <input type="text" id="inItemName"  class="form-control form-input" aria-describedby="passwordHelpInline">
-                        <p><small class="text-danger p-1 " id="errorName"></small></p>
+                        <input type="text" id="inCustomerName"  class="form-control form-input" aria-describedby="passwordHelpInline">
+                        <p><small class="text-danger p-1 " id="errorName-customer"></small></p>
                       </div>
                   </div>
                   <div class="row mb-3" >
@@ -202,8 +202,8 @@
                         <label for="inputPassword6" class="col-form-label">Customer Address*</label>
                       </div>
                       <div class="col-3">
-                        <input type="number" id="inItemQty" min="1"  class="form-control form-input" aria-describedby="passwordHelpInline">
-                        <p><small class="text-danger p-1 "id="errorQty"></small></p>
+                        <input type="number" id="inCustomerAddress" min="1"  class="form-control form-input" aria-describedby="passwordHelpInline">
+                        <p><small class="text-danger p-1 "id="errorAddress-customer"></small></p>
                       </div>
                   </div>
                   <div class="row mb-4">
@@ -211,17 +211,17 @@
                         <label for="inputPassword6" class="col-form-label">Customer Salary ($) *</label>
                       </div>
                       <div class="col-3">
-                        <input type="number" id="inItemPrice" min="1" step=".01" class="form-control form-input" aria-describedby="passwordHelpInline">
-                        <p><small class="text-danger p-1 "id="errorPrice"></small></p>
+                        <input type="number" id="inCustomerSalary" min="1" step=".01" class="form-control form-input" aria-describedby="passwordHelpInline">
+                        <p><small class="text-danger p-1 "id="errorSalary-customer"></small></p>
                       </div>
                   </div>
                   <div id="form-btn">
-                       <button type="reset" class="btn btn-danger me-3" id="form-clear">Clear</button>
-                       <button type="submit"class="btn btn-primary" id="saveData">Add Customer</button>
+                       <button type="reset" class="btn btn-danger me-3" id="form-clear-customer">Clear</button>
+                       <button type="submit"class="btn btn-primary" id="saveData-customer">Add Customer</button>
                   </div>
               </form>
           </div>
-          <button class="btn m-5" id="ss">save</button>
+          <button class="btn m-5" id="ss-customer">save</button>
           <div class="ms-5 mt-5 me-5">
               <table class="table table-hover">
                   <thead class="table-dark ">
@@ -234,7 +234,7 @@
                       
                     </tr>
                   </thead>
-                  <tbody id="itemTbl">
+                  <tbody id="customerTbl">
                  
                   </tbody>
                 </table>
