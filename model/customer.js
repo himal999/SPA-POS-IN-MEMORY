@@ -13,7 +13,7 @@ function Customer(){
     }
 
     this.setCustomerName = function(custName){
-        this.custName - custName;
+        this.custName = custName;
     }
     this.getCustomerName = function(){
         return this.custName;

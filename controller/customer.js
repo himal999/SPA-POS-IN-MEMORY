@@ -70,6 +70,28 @@ $("#inCustomerSalary").keyup(function(event){
 })
 
 
+//save customer
+
+
+
+//button not working ?
+$("#saveData-customer").click(function(){
+ 
+})
+
+//tempory btn using
+
+$("#ss-customer").click(function(){
+    var i  = new Customer();
+
+    i.setCustomerNic($("#inCustomerNic").val());
+    i.setCustomerName($("#inCustomerName").val());
+    i.setCustomerAddress($("#inCustomerAddress").val());
+    i.setCustomerSalary($("#inCustomerSalary").val());
+
+    customer.push(i);
+})
+
 
 
 
