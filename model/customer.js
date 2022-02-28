@@ -8,7 +8,7 @@ function Customer(){
         this.custNic = custNic
     }
 
-    this.getCustomer = function(){
+    this.getCustomerNic = function(){
         return this.custNic;
     }
 
@@ -30,6 +30,6 @@ function Customer(){
         this.custSalary = custSalary;
     }
     this.getCustomerSalary = function(){
-        return custAddress;
+        return this.custSalary;
     }
 }

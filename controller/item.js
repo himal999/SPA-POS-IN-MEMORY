@@ -261,7 +261,7 @@ function loadTable() {
       for(var i in item){
        
         
-        let rowObj= "<tr><th>"+ref+"</th><td>"+item[i].itemCode+"</td><td>"+item[i].itemName+"</td><td>"+item[i].itemQty+"</td><td>"+item[i].itemPrice+"</td></tr>";
+        let rowObj= "<tr><th>"+ref+"</th><td>"+item[i].getItemCode()+"</td><td>"+item[i].getItemName()+"</td><td>"+item[i].getItemQty()+"</td><td>"+item[i].getItemPrice()+"</td></tr>";
         $('#itemTbl').append(rowObj);
         
         ref++;
