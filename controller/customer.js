@@ -16,8 +16,25 @@ $("#form-clear-customer").click(function(){
     clearField();
 })
 
-$("#inCustomerNic").keyup(function(){
-    btnStatus();
+$("#inCustomerNic").keyup(function(event){
+    if(checkCustomerNic()){
+        if(event.key == "Enter"){
+            $("#inCustomerName").focus();
+        }
+    }else{
+        $("#inCustomerNic").focus();
+    }
+   
+})
+
+$("#inCustomerName").keyup(function(event){
+    if(checkCustomerName()){
+        if(event.key == "Enter"){
+            $("#inCustomerAddress").focus();
+        }
+    }else{
+        $("#inCustomerName").focus();
+    }
 })
 
 
@@ -33,6 +50,42 @@ $("#inCustomerNic").keyup(function(){
 
 
 //extra methods
+
+
+//nic validation
+regNIc = /^[0-9]{9,9}(v)$/
+
+var checkCustomerNic = function(){
+    if(regNIc.test($("#inCustomerNic").val())){
+       $("#inCustomerNic").css("border","1px solid green")
+       $("#errorNic-customer").text("")
+       return true
+      
+    }else{
+        $("#inCustomerNic").css("border","1px solid red")
+        $("#errorNic-customer").text("Worng NIC")
+        return false
+    }
+}
+
+//name validation
+
+var regName = /^[A-z,0-9]{3,}$/
+
+var checkCustomerName = function(){
+    if(regName.test($("#inCustomerName").val())){
+       $("#inCustomerName").css("border","1px solid green")
+       $("#errorName-customer").text("")
+       return true
+      
+    }else{
+        $("#inCustomerName").css("border","1px solid red")
+        $("#errorName-customer").text("Min cha 3 and dont use space")
+        return false
+    }
+}
+
+
 
 var disable = function(){
     $("#form-header-customer").text(null);
@@ -75,6 +128,6 @@ var btnStatus = function(){
 // validation
 
 
-var valid = function(){
-    if("")
-}
+// var valid = function(){
+//     if("")
+// }
