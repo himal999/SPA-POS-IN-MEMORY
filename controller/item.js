@@ -167,7 +167,7 @@ $('#ss').click(function() {
         if(deleteItem()){
             for(var s in item){
                 if(item[s].getItemCode() == $('#inItemCode').val()){
-                     item.pop(item[s]);
+                     item.splice(s,1);
                      loadTable();
                      clearField();
                      disable();

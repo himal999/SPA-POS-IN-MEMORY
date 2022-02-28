@@ -10,6 +10,7 @@ $("#btnAddCustomer").click(function(){
  
    $("#form-header-customer").text("Add New Customer");
    enable();
+   $("#ss-customer").text("Add Customer"); //tempory btn
    $("#inCustomerNic").focus();
    $("#form-clear-customer").removeAttr("disabled")
    clearField();
@@ -93,6 +94,10 @@ $("#saveData-customer").click(function(){
 //tempory btn using
 
 $("#ss-customer").click(function(){
+
+    $('#customerTbl>tr').off();
+
+
     var i  = new Customer();
 
     i.setCustomerNic($("#inCustomerNic").val());
@@ -100,10 +105,85 @@ $("#ss-customer").click(function(){
     i.setCustomerAddress($("#inCustomerAddress").val());
     i.setCustomerSalary($("#inCustomerSalary").val());
 
-    customer.push(i);
-    loadTable();
-    clearField();
-    disable();
+    if($("#ss-customer").text() == "Add Customer"){
+        customer.push(i);
+        loadTable();
+        clearField();
+        disable();
+    }
+    else if($("#ss-customer").text() == "Update"){
+        for(var s in customer){
+            if(customer[s].getCustomerNic() == $('#inCustomerNic').val()){
+                customer[s].setCustomerName(i.getCustomerName());
+                customer[s].setCustomerAddress(i.getCustomerAddress());
+                customer[s].setCustomerSalary(i.getCustomerSalary());
+
+                loadTable();
+                disable();
+                clearField();
+                return
+
+            }
+        }
+        alert("Not find Id");
+    
+    }else{
+        for(var s in customer){
+            if(customer[s].getCustomerNic() == $('#inCustomerNic').val()){
+             
+                console.log(s)
+                customer.splice(s,1);
+
+                clearField();
+                disable();
+                loadTable();
+             
+            }
+        }
+    }
+
+ 
+
+    //update customer
+
+    $("#customerTbl>tr").click(function(){
+
+        clearField();
+        enable();
+        $('#inCustomerNic').attr('disabled','disabled');
+        $("#form-header-customer").text("Update Customer");
+        $("#saveData-customer").text("Update");
+        $("#ss-customer").text("Update"); //tempory btn
+        $("#inCustomerNic").val($(this).children(':eq(1)').text());
+        $("#inCustomerName").val($(this).children(':eq(2)').text());
+        $("#inCustomerAddress").val($(this).children(':eq(3)').text());
+        $("#inCustomerSalary").val($(this).children(':eq(4)').text())
+    })
+
+    //delete customer
+
+
+    $("#customerTbl>tr").dblclick(function(){
+
+        clearField();
+        $("#form-header-customer").text("Delete Customer");
+        $("#inCustomerNic").attr("disabled","disabled")
+        $("#inCustomerName").attr("disabled","disabled")
+        $("#inCustomerAddress").attr("disabled","disabled")
+        $("#inCustomerSalary").attr("disabled","disabled")
+        $("#form-clear-customer").removeAttr("disabled");
+        $("#form-clear-customer").text("Cancel");
+        $("#saveData-customer").text("Delete")
+        $("#ss-customer").text("Delete")//tempory btn
+        $("#saveData-customer").removeAttr("disabled")
+
+        $("#inCustomerNic").val($(this).children(':eq(1)').text());
+        $("#inCustomerName").val($(this).children(':eq(2)').text());
+        $("#inCustomerAddress").val($(this).children(':eq(3)').text());
+        $("#inCustomerSalary").val($(this).children(':eq(4)').text())
+    })
+
+  
 
 })
 
