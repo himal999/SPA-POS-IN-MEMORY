@@ -17,8 +17,11 @@ $("#form-clear-customer").click(function(){
 })
 
 $("#inCustomerNic").keyup(function(event){
+    btnStatus();
     if(checkCustomerNic()){
+      
         if(event.key == "Enter"){
+            
             $("#inCustomerName").focus();
         }
     }else{
@@ -28,8 +31,11 @@ $("#inCustomerNic").keyup(function(event){
 })
 
 $("#inCustomerName").keyup(function(event){
+    btnStatus();
     if(checkCustomerName()){
+       
         if(event.key == "Enter"){
+           
             $("#inCustomerAddress").focus();
         }
     }else{
@@ -37,6 +43,31 @@ $("#inCustomerName").keyup(function(event){
     }
 })
 
+$("#inCustomerAddress").keyup(function(event){
+    btnStatus();
+    if(checkCustomerAddress()){
+     
+        if(event.key == "Enter"){
+            
+            $("#inCustomerSalary").focus();
+        }
+    }else{
+        $("#inCustomerAddress").focus();
+    }
+})
+
+$("#inCustomerSalary").keyup(function(event){
+    btnStatus();
+    if(checkCustomerSalary()){
+        
+        if(event.key == "Enter"){
+            
+            $('#saveData-customer').focus()
+        }
+    }else{
+        $("#inCustomerSalary").focus();
+    }
+})
 
 
 
@@ -53,7 +84,7 @@ $("#inCustomerName").keyup(function(event){
 
 
 //nic validation
-regNIc = /^[0-9]{9,9}(v)$/
+var regNIc = /^[0-9]{9,9}(v)$/
 
 var checkCustomerNic = function(){
     if(regNIc.test($("#inCustomerNic").val())){
@@ -85,6 +116,77 @@ var checkCustomerName = function(){
     }
 }
 
+//address validation
+
+var regAddress = /^[A-z,0-9]{3,}$/
+
+var checkCustomerAddress = function(){
+    if(regAddress.test($("#inCustomerAddress").val())){
+       $("#inCustomerAddress").css("border","1px solid green")
+       $("#errorAddress-customer").text("")
+       return true
+      
+    }else{
+        $("#inCustomerAddress").css("border","1px solid red")
+        $("#errorAddress-customer").text("Please Enter Valid Address")
+        return false
+    }
+}
+
+//salary validation
+
+var regSalary = /^[0-9]{4,}[.][0-9]{1,2}$/
+
+var checkCustomerSalary = function(){
+    if(regSalary.test($("#inCustomerSalary").val())){
+       $("#inCustomerSalary").css("border","1px solid green")
+       $("#errorSalary-customer").text("")
+       return true
+      
+    }else{
+        $("#inCustomerSalary").css("border","1px solid red")
+        $("#errorSalary-customer").text("Please Enter Valid Slary")
+        return false
+    }
+}
+
+//btn disble or enable check
+
+var btnStatus = function(){
+    if(valid()){
+        $("#saveData-customer").removeAttr("disabled")
+    }else{
+        $("#saveData-customer").attr('disabled',"disabled")
+    }
+}
+
+
+
+
+
+var valid = function(){
+    if(checkCustomerNic()){
+        if(checkCustomerName()){
+            if(checkCustomerAddress()){
+                if(checkCustomerSalary()){
+                    return true
+                }else{
+                    $("#inCustomerSalary").focus();
+                    return false; 
+                }
+            }else{
+                $("#inCustomerAddress").focus();
+                return false;
+            }
+        }else{
+            $("#inCustomerName").focus();
+            return false;
+        }
+    }else{
+        $("#inCustomerNic").focus();
+        return false;
+    }
+}
 
 
 var disable = function(){
@@ -115,19 +217,5 @@ var clearField = function(){
 }
 
 
-//btn disble or enable check
-
-var btnStatus = function(){
-    if(valid){
-        $("#saveData-customer").removeAttr("disabled")
-    }else{
-        $("#saveData-customer").attr('disabled',"disabled")
-    }
-}
-
-// validation
 
 
-// var valid = function(){
-//     if("")
-// }
