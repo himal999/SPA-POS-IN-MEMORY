@@ -13,11 +13,19 @@ $("#btnAddCustomer").click(function(){
    $("#ss-customer").text("Add Customer"); //tempory btn
    $("#inCustomerNic").focus();
    $("#form-clear-customer").removeAttr("disabled")
+   $("#form-clear-customer").text("Clear");
    clearField();
 });
 
 $("#form-clear-customer").click(function(){
-    clearField();
+
+    if($("#form-clear-customer").text == "Cancel"){
+            clearField()
+            disable();
+    }else{
+           clearField();
+    }
+   
 })
 
 $("#inCustomerNic").keyup(function(event){
@@ -108,8 +116,10 @@ $("#ss-customer").click(function(){
     if($("#ss-customer").text() == "Add Customer"){
         customer.push(i);
         loadTable();
+        alert("Customer Added success")
         clearField();
         disable();
+
     }
     else if($("#ss-customer").text() == "Update"){
         for(var s in customer){
@@ -119,24 +129,27 @@ $("#ss-customer").click(function(){
                 customer[s].setCustomerSalary(i.getCustomerSalary());
 
                 loadTable();
+                alert("Customer Update success")
                 disable();
                 clearField();
-                return
+            
 
             }
         }
-        alert("Not find Id");
+    
     
     }else{
         for(var s in customer){
             if(customer[s].getCustomerNic() == $('#inCustomerNic').val()){
              
-                console.log(s)
+               if(deleteItem()){
                 customer.splice(s,1);
 
                 clearField();
                 disable();
                 loadTable();
+               }
+              
              
             }
         }
@@ -153,6 +166,7 @@ $("#ss-customer").click(function(){
         $('#inCustomerNic').attr('disabled','disabled');
         $("#form-header-customer").text("Update Customer");
         $("#saveData-customer").text("Update");
+        $("#form-clear-customer").text("Clear");
         $("#ss-customer").text("Update"); //tempory btn
         $("#inCustomerNic").val($(this).children(':eq(1)').text());
         $("#inCustomerName").val($(this).children(':eq(2)').text());
@@ -297,7 +311,14 @@ var btnStatus = function(){
 }
 
 
+//delete confirm
 
+function deleteItem() {
+    if (confirm("Are you sure?")) {
+       return true
+    }
+    return false;
+}
 
 
 var valid = function(){
@@ -332,11 +353,19 @@ var loadTable = function(){
 
     $('#customerTbl>tr').remove();
 
-    var ref = 1;
-    for(var i in customer){
-        let rowObj= "<tr><th>"+ref+"</th><td>"+customer[i].getCustomerNic()+"</td><td>"+customer[i].getCustomerName()+"</td><td>"+customer[i].getCustomerAddress()+"</td><td>"+customer[i].getCustomerSalary()+"</td></tr>";
-         $('#customerTbl').append(rowObj)
-         ref++;
+    if(customer.length == 0){
+        let co = "'color:red;position:relative;left:830px;'"
+        let msg = "<tr><td><h5 style="+co+">No Data Available</h5></td></tr>";
+        $('#customerTbl').append(msg);
+
+    }else{
+
+        var ref = 1;
+         for(var i in customer){
+          let rowObj= "<tr><th>"+ref+"</th><td>"+customer[i].getCustomerNic()+"</td><td>"+customer[i].getCustomerName()+"</td><td>"+customer[i].getCustomerAddress()+"</td><td>"+customer[i].getCustomerSalary()+"</td></tr>";
+             $('#customerTbl').append(rowObj)
+            ref++;
+        }
     }
 }
 
