@@ -23,7 +23,8 @@
     align-items: center;
     justify-content: center;
     display: flex;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.9);
+    border-bottom:
+     1px solid rgba(0, 0, 0, 0.9);
     
 }
 
@@ -133,4 +134,32 @@
     position: relative;
     left: 700px;
     width: 100px;
+}
+#order-summary{
+    position: relative;
+    background-color: white;
+    width: 900px;
+    height: 70vh;
+}
+
+#order-summary>span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#order-summary-customer,#order-summary-pay{
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    height: 15vh;
+}
+#order-summary-customer>h5,#order-summary-pay>h5{
+    position: absolute;
+    top: -14px;
+    left: 20px;
+    background-color: white;
+}
+#order-summary-pay{
+    height: 30vh;
 }

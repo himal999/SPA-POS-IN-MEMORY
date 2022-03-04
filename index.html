@@ -250,7 +250,7 @@
         <section class=" d-flex justify-content-between" id="place-order">
           <div>
             <div class=" m-4 bg-white" id="item-sel">
-              <span class="d-flex mt-2 fs-3 bg-primary shadow-lg">Purchase Items</span>
+              <span class="d-flex mt-2 fs-3 bg-primary shadow-lg text-white">Purchase Items</span>
               <hr>
               <div class="m-3">
                 <lable class="form-lable me-3">Item Code</lable>
@@ -273,8 +273,96 @@
               </div>
               <button type="submit" class="btn btn-primary mt-4" id="place-item-add">Add</button>
             </div>
+            <div class="bg-white ms-4 mt-5 shadow-lg">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Item Code</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Unit Price($)</th>
+                    <th scope="col">Order Qty</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>I-001</td>
+                    <td>Apple</td>
+                    <td>12.00</td>
+                    <td>2</td>
+                    <td>Delete</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>I-001</td>
+                    <td>Apple</td>
+                    <td>12.00</td>
+                    <td>2</td>
+                    <td>Delete</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>I-001</td>
+                    <td>Apple</td>
+                    <td>12.00</td>
+                    <td>2</td>
+                    <td>Delete</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-          <div>sddd</div>
+          <div>
+            <div id="order-summary" class="mt-4 me-4">
+              <span class="fs-1 text-uppercase bg-primary text-white shadow-lg">Order Summary</span>
+              <div class="m-3 mt-5" id="order-summary-customer">
+                   <h5>Customer Details</h5>
+                   <div class="mt-5 ms-4">
+                    <label class="me-4">Customer NIC</label>
+                    <select class="me-5">
+                      <option>9917990381v</option>
+                      <option>9917990381v</option>
+                      <option>9917990381v</option>
+                    </select>
+                    <label class="me-4">Customer Name</label>
+                    <input type="text">
+                   </div>
+
+                  
+              </div>
+              <div>
+                  <div class="ms-3 mt-5 me-3"id="order-summary-pay">
+                    <h5>Pay Balance</h5>
+                    <div class="mt-4 ms-4">
+                    <label class="me-5">No Of Item</label>
+                    <input type="text">
+                    </div>
+                    <div class="d-flex mt-4 ms-4">
+                      <h5 class="me-2">Total Price($)</h5>
+                      <input type="text">
+                    </div>
+                    <div class="d-flex mt-4 ms-4">
+                      <h5 class="me-2">Disscount(%) </h5>
+                      <input type="text">
+                    </div>
+                    <div class="d-flex mt-4 ms-4">
+                      <h5 class="me-4">Sub Total($)</h5>
+                      <input type="text">
+                    </div>
+                   
+                  </div>
+                  <div class="d-flex justify-content-end me-3 mt-3">
+                    <button class="btn btn-danger me-3">Cancel</button>
+                    <button class="btn btn-primary">Purchase</button>
+                  </div>
+                  
+                 
+              </div>
+          
+            </div>
+          </div>
         </section>
         <!--Place Order End-->
 
