@@ -64,3 +64,73 @@
     align-items: flex-end;
     display: flex;
 }
+/*Place Order*/
+#place-order{
+    background-color: #d1d8e0;
+    height: 100vh;
+    width: auto;
+    position: relative;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+#item-sel{
+    border: 2px solid rgba(0, 0, 0, 0.4);
+    width: 130%;
+    height: 35vh;
+    position: relative;
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
+}
+
+#item-sel>span{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+#place-order-item-name-lable{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#place-order-item-name{
+    position: relative;
+    width: 500px;
+    height: 35px;
+}
+#place-order-item-price-lable{
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  
+}
+#place-order-item-price{
+    position: relative;
+    width: 130px;
+    height: 35px;
+}
+
+#place-order-item-qty-lable{
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    
+   
+}
+#place-order-item-qty{
+    position: relative;
+    width: 130px;
+    height: 35px;
+}
+#place-item-add{
+    position: relative;
+    left: 700px;
+    width: 100px;
+}
