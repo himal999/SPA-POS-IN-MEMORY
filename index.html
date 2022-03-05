@@ -269,7 +269,9 @@
                 <label class="ms-3 me-4"id="place-order-item-price-lable">Unit Price</label>
                 <input type="text" class="form-control form-lable me-5" id="place-order-item-price">
                 <label id="place-order-item-qty-lable" class="me-3">Stock Qty</label>
-                <input type="text" class="form-control form-lable"id="place-order-item-qty">
+                <input type="text" class="form-control form-lable me-5"id="place-order-item-qty">
+                <label id="place-order-item-buyQty-lable" class="me-3">Order Qty</label>
+                <input type="text" class="form-control form-lable"id="place-order-item-buyQty">
               </div>
               <button type="submit" class="btn btn-primary mt-4" id="place-item-add">Add</button>
             </div>
@@ -317,6 +319,15 @@
           <div>
             <div id="order-summary" class="mt-4 me-4">
               <span class="fs-1 text-uppercase bg-primary text-white shadow-lg">Order Summary</span>
+              <div class="d-flex ms-3 mt-3 shadow-lg justify-content-between">
+                <div class="d-flex">
+                  <h2 class="me-3">Invoice No </h2><strong class="mt-1 text-danger fs-4">#0033223</strong>
+                </div>
+               <div class="d-flex">
+                <h3 class="ms-5">Time</h3><strong class="me-4 ms-3 mt-2">22.59</strong>
+               </div>
+             
+              </div>
               <div class="m-3 mt-5" id="order-summary-customer">
                    <h5>Customer Details</h5>
                    <div class="mt-5 ms-4">
