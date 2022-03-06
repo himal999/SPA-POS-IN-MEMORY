@@ -20,17 +20,17 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                   <li class="nav-item me-3">
-                    <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active text-white" aria-current="page" href="#" id="home">Home</a>
                   </li>
                  
                   <li class="nav-item me-3">
-                    <a class="nav-link text-white">Item</a>
+                    <a class="nav-link text-white" href="#" id="item">Item</a>
                   </li>
                   <li class="nav-item me-3">
-                    <a class="nav-link text-white">Customer</a>
+                    <a class="nav-link text-white" href="#" id="customer">Customer</a>
                   </li>
                   <li class="nav-item me-3">
-                    <a class="nav-link text-white">Order</a>
+                    <a class="nav-link text-white" href="#" id="order">Order</a>
                   </li>
                 </ul>
                 <form class="d-flex">
@@ -43,8 +43,8 @@
     </header>
     <main>
 
-        <!--Index page Start-->
-        <!-- <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <!-- Index page Start-->
+        <div id="index-page" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -81,8 +81,8 @@
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
-          </div> -->
-        <!--Index page End-->
+          </div>
+        <!--Index page End -->
 
 
 
@@ -90,7 +90,7 @@
 
 
         <!--Item Manage Start-->
-        <!-- <section>
+        <section id="item-page">
             <div id="item-header" class=" mt-4 ms-5 me-5">
                  <span class="text-uppercase text-black ">Item MANAGMENT</span>
                  <button type="button" class="btn btn-primary" id="btnAdd">+ Add New Item</button>
@@ -161,15 +161,15 @@
                     </tbody>
                   </table>
             </div>
-            <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-            <script src="controller/item.js"></script>
+          
+           
 
-        </section> -->
+        </section>
         <!--Item Manage End-->
 
 
         <!--Customer Manage Start-->
-        <!-- <section>
+        <section id="customer-page">
           <div id="item-header" class=" mt-4 ms-5 me-5">
                <span class="text-uppercase text-black ">Customer MANAGMENT</span>
                <button type="button" class="btn btn-primary" id="btnAddCustomer">+ Add New Customer</button>
@@ -241,24 +241,20 @@
                 </table>
           </div>
           
-            <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-            <script src="controller/customer.js"></script>
-        </section> -->
+        
+        </section>
         <!--Customer Manage End-->
 
         <!--Place Order Start-->
-        <section class=" d-flex justify-content-between" id="place-order">
+        <section class="justify-content-between" id="place-order">
           <div>
             <div class=" m-4 bg-white" id="item-sel">
               <span class="d-flex mt-2 fs-3 bg-primary shadow-lg text-white">Purchase Items</span>
               <hr>
               <div class="m-3">
                 <lable class="form-lable me-3">Item Code</lable>
-                <select>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
+                <select id="place-item-code">
+                  
                 </select>
               </div>
               <div class="d-flex" >
@@ -338,7 +334,7 @@
                       <option>9917990381v</option>
                     </select>
                     <label class="me-4">Customer Name</label>
-                    <input type="text">
+                    <input type="text" id="place-order-cust-name">
                    </div>
 
                   
@@ -348,25 +344,25 @@
                     <h5>Pay Balance</h5>
                     <div class="mt-4 ms-4">
                     <label class="me-5">No Of Item</label>
-                    <input type="text">
+                    <input type="text" id="place-item">
                     </div>
                     <div class="d-flex mt-4 ms-4">
                       <h5 class="me-2">Total Price($)</h5>
-                      <input type="text">
+                      <input type="text" id="place-t-price">
                     </div>
                     <div class="d-flex mt-4 ms-4">
                       <h5 class="me-2">Disscount(%) </h5>
-                      <input type="text">
+                      <input type="text" id="place-disscount">
                     </div>
                     <div class="d-flex mt-4 ms-4">
                       <h5 class="me-4">Sub Total($)</h5>
-                      <input type="text">
+                      <input type="text" id="place-s-total">
                     </div>
                    
                   </div>
                   <div class="d-flex justify-content-end me-3 mt-3">
-                    <button class="btn btn-danger me-3">Cancel</button>
-                    <button class="btn btn-primary">Purchase</button>
+                    <button class="btn btn-danger me-3" id="place-btn-cancel">Cancel</button>
+                    <button class="btn btn-primary" id="place-btn-purchase">Purchase</button>
                   </div>
                   
                  
@@ -386,7 +382,16 @@
     <script src="db/db.js"></script>
     <script src="model/item.js"></script>
     <script src="model/customer.js"></script>
+    <script src="model/place_order.js"></script>
+    <script src="model/place_order_detail.js"></script>
+
+    <script src="./controller/place_order.js"></script>
+
+    <script src="./controller/mainController.js"></script>
    
+
+    <script src="controller/item.js"></script>
+    <script src="controller/customer.js"></script>
     
 </body>
 </html>
