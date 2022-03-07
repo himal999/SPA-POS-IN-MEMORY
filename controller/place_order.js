@@ -1,5 +1,5 @@
 $("document").ready(function(){
-   
+   cleaerFieldsPlaceOrder();
     disablePlace();
 })
 
@@ -21,13 +21,29 @@ $("#place-item-add").click(function(){
     let chooseItem = `<tr><td>${$('#chooseTbl>tr').length+1}</td><td>${$('#place-order-item-code').val()}</td><td>${$('#place-order-item-name').val()}</td><td>${$('#place-order-item-price').val()}</td><td>${$('#place-order-item-buyQty').val()}</td><td>Delete</td></tr>`
 
     $("#chooseTbl").append(chooseItem)
+    loadItemCodeFormItem();
+    cleaerFieldsPlaceOrder();
    
+
+    $("#chooseTbl>tr").click(function(){
+        $(this).remove();
+        loadItemCodeFormItem();
+        cleaerFieldsPlaceOrder();
+
+        // ODERING NUMBER RESET
+        var le = $('#chooseTbl>tr').length;
+        for(var s =0 ;s<=le;s++){
+            $('#chooseTbl>tr').children(':eq(0)').text(s+1);
+            s++;
+        }
+    })
 })
 
 
 
 
 //extra methods
+
 
 
 
@@ -51,15 +67,22 @@ function checkValidQty(){
 
 function loadItemCodeFormItem(){
     $("#place-item-code>option").remove();
-    
+   
     for(var i in item){
      
-      let code =   item[i].getItemCode();
-      let app = `<option>${code}</option>`;
-      $("#place-item-code").append(app);
+      if($("#chooseTbl>tr").children(':eq(1)').text() != item[i].getItemCode())  {
+        let code =   item[i].getItemCode();
+        let app = `<option>${code}</option>`;
+        $("#place-item-code").append(app);
+     
+      }
+
+     
 
     
     }
+
+   
 
     $("#place-item-code>option").click(function(){
         selectionData($(this).text());
@@ -100,4 +123,14 @@ function selectionData(){
     $("#place-btn-purchase").attr("disabled","disabled");
     $("#place-btn-cancel").attr("disabled","disabled");
  
+}
+
+function cleaerFieldsPlaceOrder(){
+    $("#place-order-item-name").val("");
+    $("#place-order-item-price").val("");
+    $("#place-order-item-qty").val("");
+    $("#place-order-item-buyQty").val("");
+  
+    $('#place-order-item-code').val("");
+
 }
