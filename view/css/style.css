@@ -164,3 +164,8 @@
 #order-summary-pay{
     height: 30vh;
 }
+
+#error-buy-qty{
+    position: relative;
+    left: 290PX;
+}
