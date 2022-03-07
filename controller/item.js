@@ -1,17 +1,17 @@
 $("document").ready(function(){
- disable();
- loadTable();
+ disableItem();
+ loadTableItem();
     
 })
 
 
 $('#btnAdd').click(function(){
-    clearField();
+    clearFieldItem();
     $('#form-header').text("Add New Item");
     $("#saveData").text("Add Item")
     $("#form-clear").text("Clear")
     $("#ss").text("Add Item") //tempory btn
-    enable();
+    enableItem();
 })
 
 $('#form-clear').click(function(){
@@ -20,14 +20,14 @@ $('#form-clear').click(function(){
    
     if($("#saveData").text() == "Add Item"){
 
-        clearField();
+        clearFieldItem();
 
     }else if($("#saveData").text() == "Update"){
        
-        clearUpdateField();
+        clearUpdateFieldItem();
     }else{
-        clearField();
-        disable();
+        clearFieldItem();
+        disableItem();
     }
   
 })
@@ -43,7 +43,7 @@ var regItemPrice = /^[0-9]{1,}(.)[0-9]{1,2}$/
 
 
 $('#inItemCode').on('keyup',function(event){
-    btnStatus();
+    btnStatusItem();
     
     if(event.key == "Enter"){
 
@@ -71,7 +71,7 @@ $('#inItemCode').blur(function(){
         $('#inItemName').attr("disabled","disabled")
         $('#inItemQty').attr("disabled","disabled")
         $('#inItemPrice').attr("disabled","disabled")
-        clearUpdateField();
+        clearUpdateFieldItem();
        
        
     }
@@ -81,7 +81,7 @@ $('#inItemCode').blur(function(){
 
 
 $('#inItemName').on('keyup',function(event){
-    btnStatus();
+    btnStatusItem();
 
      if(event.key == "Enter"){
 
@@ -94,7 +94,7 @@ $('#inItemName').on('keyup',function(event){
 })
 
 $('#inItemQty').on('keyup',function(event){
-    btnStatus();
+    btnStatusItem();
     if(event.key == "Enter"){
     
             $('#inItemPrice').focus();
@@ -103,7 +103,7 @@ $('#inItemQty').on('keyup',function(event){
     }
 })
 $('#inItemPrice').on('keyup',function(event){
-    btnStatus();
+    btnStatusItem();
     if(event.key == "Enter"){
         $('#saveData').focus();
   
@@ -142,11 +142,11 @@ $('#ss').click(function() {
 
         alert("Item Added Successfully")
 
-        loadTable();
+        loadTableItem();
 
-        clearField();
+        clearFieldItem();
         
-        disable();
+        disableItem();
 
    }else if($("#ss").text() == "Update"){
        
@@ -156,9 +156,9 @@ $('#ss').click(function() {
               item[s].setItemName(i.getItemName());
               item[s].setItemQty(i.getItemQty()) ;
               item[s].setItemPrice(i.getItemPrice());
-              loadTable();
-              clearField();
-              disable();
+              loadTableItem();
+              clearFieldItem();
+              disableItem();
             }
         }
    }
@@ -168,16 +168,16 @@ $('#ss').click(function() {
             for(var s in item){
                 if(item[s].getItemCode() == $('#inItemCode').val()){
                      item.splice(s,1);
-                     loadTable();
-                     clearField();
-                     disable();
+                     loadTableItem();
+                     clearFieldItem();
+                     disableItem();
                      
                  }
             }
         }
 
-        clearField();
-        disable();
+        clearFieldItem();
+        disableItem();
      
    }
 
@@ -185,7 +185,7 @@ $('#ss').click(function() {
     //delete data
 
     $("#itemTbl>tr").dblclick(function(){
-        clearField();
+        clearFieldItem();
         
         $('#form-header').text("Delete Item");
         $('#saveData').text("Delete");
@@ -210,8 +210,8 @@ $('#ss').click(function() {
 
     $("#itemTbl>tr").click(function(){
 
-         clearField();
-         enable();
+         clearFieldItem();
+         enableItem();
          $('#form-header').text("Update Item");
          $('#form-clear').text("Clear");
      
@@ -243,7 +243,7 @@ function deleteItem() {
 
 //load Table
 
-function loadTable() {
+function loadTableItem() {
 
     $("#itemTbl>tr").remove();
 
@@ -289,8 +289,8 @@ function checkItemCode(itemCode){
 //validation
 
 
-function btnStatus(){
-    var b = valid(); 
+function btnStatusItem(){
+    var b = validItem(); 
 
     if(b){
 
@@ -305,7 +305,7 @@ function btnStatus(){
     }
 }
 
-function valid(){
+function validItem(){
     if(regItemCode.test($('#inItemCode').val())){
        
         $('#inItemCode').css("border","1px solid  green");
@@ -355,7 +355,7 @@ function valid(){
 
 //Disable all btn/field
 
-function disable(){
+function disableItem(){
     $('#form-header').text(null);
     $("#form-clear").attr("disabled",'disabled')
     $("#saveData").attr("disabled",'disabled')
@@ -367,7 +367,7 @@ function disable(){
 
 //Enable all btn/field
 
-function enable(){
+function enableItem(){
     
     $("#form-clear").removeAttr("disabled")
     $('#inItemCode').removeAttr('disabled')
@@ -378,7 +378,7 @@ function enable(){
 
 // Clear Field 
 
-function clearField(){
+function clearFieldItem(){
 
     $('#inItemCode').val("")
     $('#inItemCode').css("border","1px solid #CED4DA")
@@ -392,7 +392,7 @@ function clearField(){
 
 // clear field update
 
-function clearUpdateField(){
+function clearUpdateFieldItem(){
     
     $('#inItemName').val("")
     $('#inItemName').css("border","1px solid #CED4DA")
