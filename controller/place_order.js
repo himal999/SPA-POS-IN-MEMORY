@@ -12,6 +12,18 @@ $("#place-order-item-buyQty").keyup(function(){
     checkValidQty();
 })
 
+//ADD CHOOSE ITEM
+
+$("#place-item-add").click(function(){
+
+
+
+    let chooseItem = `<tr><td>${$('#chooseTbl>tr').length+1}</td><td>${$('#place-order-item-code').val()}</td><td>${$('#place-order-item-name').val()}</td><td>${$('#place-order-item-price').val()}</td><td>${$('#place-order-item-buyQty').val()}</td><td>Delete</td></tr>`
+
+    $("#chooseTbl").append(chooseItem)
+   
+})
+
 
 
 
@@ -61,6 +73,7 @@ function loadItemCodeFormItem(){
 function selectionData(){
     for(var i in item){
         if(item[i].getItemCode() == arguments[0]){
+            $("#place-order-item-code").val(item[i].getItemCode());
             $("#place-order-item-name").val(item[i].getItemName());
             $("#place-order-item-price").val(item[i].getItemPrice());
             $("#place-order-item-qty").val(item[i].getItemQty());
@@ -78,6 +91,7 @@ function selectionData(){
     $("#place-order-item-qty").attr("disabled","disabled");
     $("#place-order-item-buyQty").attr("disabled","disabled");
     $("#place-order-cust-name").attr("disabled","disabled");
+    $('#place-order-item-code').attr("disabled","disabled");
     $("#place-item-add").attr("disabled","disabled");
     $("#place-item").attr("disabled","disabled");
     $("#place-t-price").attr("disabled","disabled");
