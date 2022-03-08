@@ -179,3 +179,16 @@
     position: relative;
     left: 290PX;
 }
+
+#place-item{
+    position: relative;
+    width: 120px;
+    font-weight: bold;
+    color: black;
+}
+#place-t-price{
+    padding-left: 10PX;
+    position: relative;
+    color: black;
+    font-weight: bold;
+}

@@ -77,9 +77,6 @@ function loadItemCodeFormItem(){
      
       }
 
-     
-
-    
     }
 
    
@@ -87,7 +84,28 @@ function loadItemCodeFormItem(){
     $("#place-item-code>option").click(function(){
         selectionData($(this).text());
     })
+
+    $("#place-item").val($('#chooseTbl>tr').length);
+    $("#place-t-price").val(calTotal());
   
+}
+
+//total find
+
+function calTotal(){
+    var count = $('#chooseTbl>tr').length;
+  
+    
+    var total=0.00;
+
+    for(var temp=1; temp<=count;temp++){
+         var unPrice =$(`#chooseTbl>tr:nth-child(${temp})`).children(':eq(3)').text();
+         var qty = $(`#chooseTbl>tr:nth-child(${temp})`).children(':eq(4)').text();
+        total+=unPrice*qty;
+        
+    }
+
+    return total;
 }
 
 
