@@ -12,24 +12,31 @@ $("#place-order-item-buyQty").keyup(function(){
     checkValidQty();
 })
 
+//disscount
+
+$("#place-disscount").keyup(function(){
+    $('#place-s-total').val(calsubTotal());
+})
+
 //ADD CHOOSE ITEM
 
 $("#place-item-add").click(function(){
 
 
 
-    let chooseItem = `<tr><td>${$('#chooseTbl>tr').length+1}</td><td>${$('#place-order-item-code').val()}</td><td>${$('#place-order-item-name').val()}</td><td>${$('#place-order-item-price').val()}</td><td>${$('#place-order-item-buyQty').val()}</td><td>Delete</td></tr>`
+    let chooseItem = `<tr><td>${$('#chooseTbl>tr').length+1}</td><td>${$('#place-order-item-code').val()}</td><td>${$('#place-order-item-name').val()}</td><td>${$('#place-order-item-price').val()}</td><td>${$('#place-order-item-buyQty').val()}</td></tr>`
 
     $("#chooseTbl").append(chooseItem)
     loadItemCodeFormItem();
     cleaerFieldsPlaceOrder();
+    checkStatusPurchase();
    
 
     $("#chooseTbl>tr").click(function(){
         $(this).remove();
         loadItemCodeFormItem();
         cleaerFieldsPlaceOrder();
-
+        checkStatusPurchase();
         // ODERING NUMBER RESET
         var le = $('#chooseTbl>tr').length;
         for(var s =0 ;s<=le;s++){
@@ -37,6 +44,8 @@ $("#place-item-add").click(function(){
             s++;
         }
     })
+
+   
 })
 
 
@@ -44,6 +53,35 @@ $("#place-item-add").click(function(){
 
 //extra methods
 
+//cal sub total
+
+function calsubTotal(){
+    let diss = $("#place-disscount").val();
+
+    var total = calTotal();
+
+    var subTotal = total - (total*diss/100);
+
+    return subTotal;
+    
+}
+
+//purchase btn status
+
+function checkStatusPurchase(){
+    if($("#chooseTbl>tr").length > 0){
+        $('#place-btn-purchase').removeAttr('disabled')
+        $('#place-btn-cancel').removeAttr('disabled')
+        $('#place-disscount').removeAttr('disabled')
+        
+        
+    }else{
+        $('#place-btn-purchase').attr('disabled','disabled')
+        $('#place-btn-cancel').attr('disabled','disabled')
+        $('#place-disscount').attr('disabled','disabled')
+        
+    }
+}
 
 
 
