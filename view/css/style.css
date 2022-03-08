@@ -186,9 +186,12 @@
     font-weight: bold;
     color: black;
 }
-#place-t-price{
+#place-t-price,#place-s-total,#place-disscount{
     padding-left: 10PX;
     position: relative;
     color: black;
     font-weight: bold;
 }
+
+
+

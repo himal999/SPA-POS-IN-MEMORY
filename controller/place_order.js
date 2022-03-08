@@ -1,11 +1,19 @@
 $("document").ready(function(){
    cleaerFieldsPlaceOrder();
-    disablePlace();
+   disablePlace();
+   
 })
 
 $("#place-order").click(function(){
     loadItemCodeFormItem();
+   $("#place-invoice").text(invoiceNumber());
+  
+
 })
+
+//load time
+
+setInterval("getTime()",1000)
 
 //buy qty
 $("#place-order-item-buyQty").keyup(function(){
@@ -22,7 +30,7 @@ $("#place-disscount").keyup(function(){
 
 $("#place-item-add").click(function(){
 
-
+    $('#chooseTbl>tr').off();
 
     let chooseItem = `<tr><td>${$('#chooseTbl>tr').length+1}</td><td>${$('#place-order-item-code').val()}</td><td>${$('#place-order-item-name').val()}</td><td>${$('#place-order-item-price').val()}</td><td>${$('#place-order-item-buyQty').val()}</td></tr>`
 
@@ -30,6 +38,7 @@ $("#place-item-add").click(function(){
     loadItemCodeFormItem();
     cleaerFieldsPlaceOrder();
     checkStatusPurchase();
+    disablePlace();
    
 
     $("#chooseTbl>tr").click(function(){
@@ -53,6 +62,42 @@ $("#place-item-add").click(function(){
 
 //extra methods
 
+
+//genareate invoice number
+
+function invoiceNumber(){
+   if(order.length > 0){
+        var temp = order[order.length-1].getInvoiceNo().split("-")[1];
+        temp = temp+1;
+        if(temp<9){
+            return "0-00"+temp;
+        }else if(temp<99){
+            return "0-0"+temp;
+        }else{
+            return "0-"+temp;
+        }
+   }else{
+    return "0-001";
+      
+   }
+}
+//get time
+
+function getTime(){
+    var time  = new Date();
+    $('#place-time').text(time.toLocaleTimeString())
+}
+//disable 
+
+function disablePlace(){
+    $("#place-order-item-name").attr('disabled','disabled');
+    $("#place-order-item-price").attr('disabled','disabled');
+    $("#place-order-item-qty").attr('disabled','disabled');
+    $("#place-order-item-buyQty").attr('disabled','disabled');
+    $('#place-item-add').attr('disabled','disabled')
+    $('#place-order-item-code').attr('disabled','disabled');
+}
+
 //cal sub total
 
 function calsubTotal(){
@@ -69,7 +114,9 @@ function calsubTotal(){
 //purchase btn status
 
 function checkStatusPurchase(){
+    console.log($("#chooseTbl>tr").length)
     if($("#chooseTbl>tr").length > 0){
+        
         $('#place-btn-purchase').removeAttr('disabled')
         $('#place-btn-cancel').removeAttr('disabled')
         $('#place-disscount').removeAttr('disabled')
@@ -105,17 +152,41 @@ function checkValidQty(){
 
 function loadItemCodeFormItem(){
     $("#place-item-code>option").remove();
-   
-    for(var i in item){
-     
-      if($("#chooseTbl>tr").children(':eq(1)').text() != item[i].getItemCode())  {
-        let code =   item[i].getItemCode();
-        let app = `<option>${code}</option>`;
-        $("#place-item-code").append(app);
-     
-      }
 
-    }
+
+
+    $('#chooseTbl>tr')
+        for(var i in item){
+     
+            let code =   item[i].getItemCode();
+            let app = `<option>${code}</option>`;
+            $("#place-item-code").append(app);
+        }
+    // }else{
+
+    //     var tempCode = new Array();
+
+    //     for(var s=1;s<= $('#chooseTbl>tr').length;s++){
+    //         tempCode.push($('#chooseTbl>tr').children(':eq(1)').text());
+    //     }
+
+    // }
+   
+//   L1:for(var s=0 ; s<= $('#chooseTbl>tr').length;s++){
+
+//         for(var i in item){
+     
+//             if($(`#chooseTbl>tr:nth-child(${s})`).children(':eq(1)').text() != item[i].getItemCode())  {
+//                 console.log($(`#chooseTbl>tr:nth-child(${s})`).children(':eq(1)').text())
+//                 let code =   item[i].getItemCode();
+//                 let app = `<option>${code}</option>`;
+//                 $("#place-item-code").append(app);
+//                 continue L1;
+     
+//            }
+
+//         }
+//     }
 
    
 
@@ -157,6 +228,7 @@ function selectionData(){
             $("#place-order-item-price").val(item[i].getItemPrice());
             $("#place-order-item-qty").val(item[i].getItemQty());
             $("#place-order-item-buyQty").removeAttr("disabled");
+            $('#place-item-add').removeAttr('disabled')
           
         }
     }
