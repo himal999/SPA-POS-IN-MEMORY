@@ -84,6 +84,13 @@ $('#place-btn-purchase').click(function(){
        buyItem.push($(`#chooseTbl>tr:nth-child(${i})`).children(':eq(1)').text());
        buyQty.push($(`#chooseTbl>tr:nth-child(${i})`).children(':eq(4)').text());
 
+      for(var k in item){
+          
+        if($(`#chooseTbl>tr:nth-child(${i})`).children(':eq(1)').text() == item[k].getItemCode()){
+            item[k].setItemQty(item[k].getItemQty()-$(`#chooseTbl>tr:nth-child(${i})`).children(':eq(4)').text())
+        }
+      }
+
    }
    p.setItemCode(buyItem);
    p.setOrderQty(buyQty);
@@ -102,10 +109,22 @@ $('#place-btn-purchase').click(function(){
        pd.setTime($("#place-time").text());
 
        order_detail.push(pd)
+
+
+       
  
       alert("order Place Success !!!")
 
       $("#place-invoice").text(invoiceNumber());
+
+
+      cleaerFieldsPlaceOrder();
+      disablePlace()
+      $('#chooseTbl>tr').remove();
+
+
+
+
   
 })
 
