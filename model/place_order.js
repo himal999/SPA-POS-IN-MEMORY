@@ -11,14 +11,14 @@ function Place_order(){
         return this.invoiceNo;
     }
 
-    this.setItemCode = function(){
+    this.setItemCode = function(itemCode){
         this.itemCode = itemCode;
     }
     this.getItemCode = function(){
         return this.itemCode;
     }
 
-    this.setOrderQty = function(){
+    this.setOrderQty = function(orderQty){
         this.orderQty = orderQty;
     }
     this.getOrderQty = function(){

@@ -7,7 +7,7 @@ $("document").ready(function(){
 $("#place-order").click(function(){
     loadItemCodeFormItem();
     getCustomer();
-   $("#place-invoice").text(invoiceNumber());
+    $("#place-invoice").text(invoiceNumber());
   
 
 })
@@ -41,7 +41,7 @@ $("#place-item-add").click(function(){
     loadItemCodeFormItem();
     cleaerFieldsPlaceOrder();
     checkStatusPurchase();
-    disablePlace();
+    
    
 
     $("#chooseTbl>tr").click(function(){
@@ -59,6 +59,51 @@ $("#place-item-add").click(function(){
 
    
 })
+
+//PURCHASE ITEM BTN
+
+$('#place-btn-purchase').click(function(){
+
+   var p = new Place_order();
+   
+   p.setInvoiceNo($('#place-invoice').text());
+
+   var buyItem = new Array();
+   var buyQty = new Array();
+
+   
+   for(var i=1;i<=$("#chooseTbl>tr").length;i++){
+       buyItem.push($(`#chooseTbl>tr:nth-child(${i})`).children(':eq(1)').text());
+       buyQty.push($(`#chooseTbl>tr:nth-child(${i})`).children(':eq(4)').text());
+
+   }
+   p.setItemCode(buyItem);
+   p.setOrderQty(buyQty);
+
+   if(order.push(p) == 1){
+       var pd = new place_order_detail();
+
+       pd.setInvoiceNo(p.getInvoiceNo());
+       pd.setCustomerNic($("#place-order-cust-name").text());
+       pd.setNoOfItem($("#place-item").val())
+       pd.setTPrice($("#place-t-price").val())
+       pd.setDisscount($('#place-disscount').val())
+       pd.setSTotal($('#place-s-total').val());
+       pd.setDate();
+       pd.setTime($("#place-time").text());
+
+       order_detail.push(pd)
+   }
+
+   alert("order Place Success !!!")
+  
+})
+
+
+
+
+
+
 
 
 
@@ -145,7 +190,7 @@ function calsubTotal(){
 //purchase btn status
 
 function checkStatusPurchase(){
-    console.log($("#chooseTbl>tr").length)
+   
     if($("#chooseTbl>tr").length > 0){
         
         $('#place-btn-purchase').removeAttr('disabled')
