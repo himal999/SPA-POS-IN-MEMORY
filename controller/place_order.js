@@ -6,10 +6,13 @@ $("document").ready(function(){
 
 $("#place-order").click(function(){
     loadItemCodeFormItem();
+    getCustomer();
    $("#place-invoice").text(invoiceNumber());
   
 
 })
+
+
 
 //load time
 
@@ -62,6 +65,34 @@ $("#place-item-add").click(function(){
 
 //extra methods
 
+//load customer
+
+function getCustomer(){
+    $("#place-cust-id>option").remove();
+
+    for(var i  in customer){
+        
+        let cust = `<option>${customer[i].getCustomerNic()}</option>`;
+        $('#place-cust-id').append(cust);
+    }
+
+    $("#place-cust-id>option").click(function(){
+        loadCustomerDetails($(this).text());
+        
+    })
+}
+
+//load customer details
+
+function loadCustomerDetails(){
+    console.log(arguments[0])
+    for(var i in customer){
+        if(arguments[0] == customer[i].getCustomerNic()){
+            $("#place-order-cust-name").val(customer[i].getCustomerName())
+        }
+    }
+
+}
 
 //genareate invoice number
 
