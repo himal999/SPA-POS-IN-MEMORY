@@ -12,6 +12,14 @@ $("#place-order").click(function(){
 
 })
 
+//cancel btn
+
+$("#place-btn-cancel").click(function(){
+    cleaerFieldsPlaceOrder();
+    disablePlace();
+    $('#chooseTbl>tr').remove();
+})
+
 
 
 //load time
@@ -96,6 +104,8 @@ $('#place-btn-purchase').click(function(){
        order_detail.push(pd)
  
       alert("order Place Success !!!")
+
+      $("#place-invoice").text(invoiceNumber());
   
 })
 
@@ -151,17 +161,18 @@ function loadCustomerDetails(){
 
 function invoiceNumber(){
    if(order.length > 0){
-        var temp = order[order.length-1].getInvoiceNo().split("-")[1];
-        temp = temp+1;
+        let temp = order[order.length-1].getInvoiceNo();
+       
+        temp+=1;
         if(temp<9){
-            return "0-00"+temp;
+            return temp;
         }else if(temp<99){
-            return "0-0"+temp;
+            return temp;
         }else{
-            return "0-"+temp;
+            return temp;
         }
    }else{
-    return "0-001";
+    return 1;
       
    }
 }
@@ -320,5 +331,12 @@ function cleaerFieldsPlaceOrder(){
     $("#place-order-item-buyQty").val("");
   
     $('#place-order-item-code').val("");
+
+    $("#place-order-cust-name").val("")
+    $('#place-item').val("");
+    $('#place-t-price').val("");
+    $('#place-disscount').val("");
+    $('#place-s-total').val("");
+    $('#place-item').val("");
 
 }
