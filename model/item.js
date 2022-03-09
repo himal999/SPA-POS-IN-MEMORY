@@ -1,31 +1,31 @@
 function Item(){
-    var itemCode;
-    var itemName;
-    var itemQty;
-    var itemPrice;
+    var __itemCode;
+    var __itemName;
+    var __itemQty;
+    var __itemPrice;
 
     this.getItemCode = function(){
-        return this.itemCode;
+        return this.__itemCode;
     }
     this.setItemCode = function(itemCode){
-        this.itemCode = itemCode;
+        this.__itemCode = itemCode;
     }
     this.getItemName = function(){
-        return this.itemName;
+        return this.__itemName;
     }
     this.setItemName = function(itemName){
-        this.itemName = itemName;
+        this.__itemName = itemName;
     }
     this.getItemQty = function(){
-        return this.itemQty;
+        return this.__itemQty;
     }
     this.setItemQty = function(itemQty){
-        this.itemQty = itemQty;
+        this.__itemQty = itemQty;
     }
     this.getItemPrice = function(){
-        return this.itemPrice;
+        return this.__itemPrice;
     }
     this.setItemPrice = function(itemPrice){
-        this.itemPrice = itemPrice;
+        this.__itemPrice = itemPrice;
     }
 }

@@ -1,35 +1,35 @@
 function Customer(){
-    var custNic;
-    var custName;
-    var custAddress;
-    var custSalary;
+    var __custNic;
+    var __custName;
+    var __custAddress;
+    var __custSalary;
 
     this.setCustomerNic= function(custNic){
-        this.custNic = custNic
+        this.__custNic = custNic
     }
 
     this.getCustomerNic = function(){
-        return this.custNic;
+        return this.__custNic;
     }
 
     this.setCustomerName = function(custName){
-        this.custName = custName;
+        this.__custName = custName;
     }
     this.getCustomerName = function(){
-        return this.custName;
+        return this.__custName;
     }
 
     this.setCustomerAddress  = function(custAddress){
-        this.custAddress = custAddress;
+        this.__custAddress = custAddress;
     }
     this.getCustomerAddress = function(){
-        return this.custAddress;
+        return this.__custAddress;
     }
 
     this.setCustomerSalary = function(custSalary){
-        this.custSalary = custSalary;
+        this.__custSalary = custSalary;
     }
     this.getCustomerSalary = function(){
-        return this.custSalary;
+        return this.__custSalary;
     }
 }

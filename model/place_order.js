@@ -1,28 +1,28 @@
 function Place_order(){
-    var invoiceNo;
-    var itemCode;
-    var orderQty;
+    var __invoiceNo;
+    var __itemCode;
+    var __orderQty;
 
     this.setInvoiceNo = function(invoiceNo){
-        this.invoiceNo = invoiceNo;
+        this.__invoiceNo = invoiceNo;
     }
 
     this.getInvoiceNo = function(){
-        return this.invoiceNo;
+        return this.__invoiceNo;
     }
 
     this.setItemCode = function(itemCode){
-        this.itemCode = itemCode;
+        this.__itemCode = itemCode;
     }
     this.getItemCode = function(){
-        return this.itemCode;
+        return this.__itemCode;
     }
 
     this.setOrderQty = function(orderQty){
-        this.orderQty = orderQty;
+        this.__orderQty = orderQty;
     }
     this.getOrderQty = function(){
-        return this.orderQty;
+        return this.___orderQty;
     }
 
 

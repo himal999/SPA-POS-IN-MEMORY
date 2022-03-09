@@ -1,66 +1,66 @@
 function place_order_detail(){
-    var invoiceNo;
-    var customerNic;
-    var noOfItem;
-    var tPrice;
-    var disscount;
-    var sTotal;
-    var date;
-    var time;
+    var __invoiceNo;
+    var __customerNic;
+    var __noOfItem;
+    var __tPrice;
+    var __disscount;
+    var __sTotal;
+    var __date;
+    var __time;
 
     this.setInvoiceNo = function(invoiceNo){
-        this.invoiceNo = invoiceNo;
+        this.__invoiceNo = invoiceNo;
     }
     this.getInvoiceNo = function(){
-        return this.invoiceNo;
+        return this.__invoiceNo;
     }
 
     this.setCustomerNic = function(customerNic){
-        this.customerNic = customerNic;
+        this.__customerNic = customerNic;
     }
     this.getCustomerNic = function(){
-        return this.customerNic;
+        return this.__customerNic;
     }
 
     this.setNoOfItem = function(noOfItem){
-        this.noOfItem = noOfItem;
+        this.__noOfItem = noOfItem;
     }
     this.getNoOfItem = function(){
-        return this.noOfItem;
+        return this.__noOfItem;
     }
 
     this.setTPrice = function(tPrice){
-        this.tPrice = tPrice;
+        this.__tPrice = tPrice;
     }
     this.getTPrice = function(){
-        return this.tPrice;
+        return this.__tPrice;
     }
 
     this.setDisscount = function(disscount){
-        this.disscount = disscount;
+        this.__disscount = disscount;
     }
     this.getDisscount = function(){
-        return this.disscount;
+        return this.__disscount;
     }
 
     this.setSTotal = function(sTotal){
-        this.sTotal = sTotal;
+        this.__sTotal = sTotal;
     }
     this.getSTotal = function(){
-        return this.sTotal;
+        return this.__sTotal;
     }
 
     this.setDate = function(date){
-        this.date = date; 
+        this.__date = date; 
     }
     this.getDate = function(){
-        return this.date;
+        return this.__date;
     }
 
     this.setTime = function(time){
-        this.time = time;
+        this.__time = time;
     }
     this.getTime = function(){
-        return this.time;
+        return this.__time;
     }
 }
