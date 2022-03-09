@@ -80,22 +80,22 @@ $('#place-btn-purchase').click(function(){
    p.setItemCode(buyItem);
    p.setOrderQty(buyQty);
 
-   if(order.push(p) == 1){
+   order.push(p)
+
        var pd = new place_order_detail();
 
        pd.setInvoiceNo(p.getInvoiceNo());
-       pd.setCustomerNic($("#place-order-cust-name").text());
+       pd.setCustomerNic($("#place-order-cust-name").val());
        pd.setNoOfItem($("#place-item").val())
        pd.setTPrice($("#place-t-price").val())
        pd.setDisscount($('#place-disscount').val())
        pd.setSTotal($('#place-s-total').val());
-       pd.setDate();
+       pd.setDate(getDate());
        pd.setTime($("#place-time").text());
 
        order_detail.push(pd)
-   }
-
-   alert("order Place Success !!!")
+ 
+      alert("order Place Success !!!")
   
 })
 
@@ -110,6 +110,14 @@ $('#place-btn-purchase').click(function(){
 
 //extra methods
 
+
+
+//get Date
+
+function getDate(){
+    var date = new Date()
+     return date.toLocaleDateString()
+}
 //load customer
 
 function getCustomer(){
@@ -238,31 +246,7 @@ function loadItemCodeFormItem(){
             let app = `<option>${code}</option>`;
             $("#place-item-code").append(app);
         }
-    // }else{
-
-    //     var tempCode = new Array();
-
-    //     for(var s=1;s<= $('#chooseTbl>tr').length;s++){
-    //         tempCode.push($('#chooseTbl>tr').children(':eq(1)').text());
-    //     }
-
-    // }
    
-//   L1:for(var s=0 ; s<= $('#chooseTbl>tr').length;s++){
-
-//         for(var i in item){
-     
-//             if($(`#chooseTbl>tr:nth-child(${s})`).children(':eq(1)').text() != item[i].getItemCode())  {
-//                 console.log($(`#chooseTbl>tr:nth-child(${s})`).children(':eq(1)').text())
-//                 let code =   item[i].getItemCode();
-//                 let app = `<option>${code}</option>`;
-//                 $("#place-item-code").append(app);
-//                 continue L1;
-     
-//            }
-
-//         }
-//     }
 
    
 

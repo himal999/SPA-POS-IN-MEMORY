@@ -78,7 +78,7 @@
 #item-sel{
     border: 2px solid rgba(0, 0, 0, 0.4);
     width: 100%;
-    height: 35vh;
+    height: 40vh;
     position: relative;
     box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
 }
@@ -150,7 +150,7 @@
     position: relative;
     background-color: white;
     width: 900px;
-    height: 70vh;
+    height: 75vh;
 }
 
 #order-summary>span{
