@@ -20,6 +20,15 @@ $("#place-btn-cancel").click(function(){
     $('#chooseTbl>tr').remove();
 })
 
+//btn search
+$('#search').on('keyup',function(){
+    var value = $(this).val().toLowerCase();
+    $('#chooseTbl>tr').filter(function(){
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    })
+})
+
+
 
 
 //load time
@@ -64,7 +73,7 @@ $("#place-item-add").click(function(){
             s++;
         }
     })
-
+ 
    
 })
 

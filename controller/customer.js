@@ -28,6 +28,15 @@ $("#form-clear-customer").click(function(){
    
 })
 
+//search btn
+$('#search').on('keyup',function(){
+    var value = $(this).val().toLowerCase();
+    $('#customerTbl>tr').filter(function(){
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    })
+})
+
+
 $("#inCustomerNic").keyup(function(event){
     btnStatus();
     

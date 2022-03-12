@@ -110,6 +110,14 @@ $('#inItemPrice').on('keyup',function(event){
     }
 })
 
+//search btn
+$('#search').on('keyup',function(){
+    var value = $(this).val().toLowerCase();
+    $('#itemTbl>tr').filter(function(){
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    })
+})
+
 
 
 //this saveData btn not workinh ?
@@ -147,6 +155,9 @@ $('#ss').click(function() {
         clearFieldItem();
         
         disableItem();
+
+
+       
 
    }else if($("#ss").text() == "Update"){
        
